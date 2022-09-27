@@ -1,0 +1,8 @@
+<app-input (onAddContact)="addContact($event)" [contact] = "getContactDetailsData"></app-input>
+
+<app-contact-list 
+[contacts]="contacts"
+(onDeleteContact)="deleteContact($event)"
+(onEditContact)="getContactDetails($event)"
+>
+</app-contact-list>

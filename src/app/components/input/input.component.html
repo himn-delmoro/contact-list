@@ -1,0 +1,52 @@
+<div class="col-md-6 mt-2">
+    <form #contactForm="ngForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+            <input type="hidden" class="form-control" id="id" #id="ngModel" name="id"  [(ngModel)] ="contactDetails.id" placeholder="Enter Name" minlength="3">
+            <input type="text" class="form-control" id="name" #name="ngModel" name="name"  [(ngModel)] ="contactDetails.name" placeholder="Enter Name" minlength="3" required>
+            <p *ngIf="name.errors?.['required'] && name.touched && name.dirty">
+                Name is Required
+            </p>
+            <p *ngIf="name.errors?.['minlength']">
+                Name must be minimum of 3 characters
+            </p>
+            </div>
+        </div>
+        <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="email" #email="ngModel" name="email" [(ngModel)] = "contactDetails.email" placeholder="Enter Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <p *ngIf="email.errors?.['required'] && email.touched && email.dirty">
+                Email is Required
+            </p>
+            <p *ngIf="email.errors?.['pattern']">
+                You must enter a valid email
+            </p>
+        </div>
+        </div>
+        <div class="form-group">
+        <label for="contact" class="col-sm-2 control-label">Contact</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="contact"  name="phone" [(ngModel)] = "contactDetails.phone" placeholder="Enter Contact" minlength="11" maxlength="11" #phone="ngModel" required>
+            <p *ngIf="phone.errors?.['required'] && phone.touched && phone.dirty">
+                Phone is Required
+            </p>
+            <p *ngIf="phone.errors?.['minlength']">
+                Phone must be 11 characters
+            </p>
+        </div>
+        </div>
+        <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button [disabled]="contactForm.invalid" type="submit" class="btn btn-success">Add / Update</button>
+        </div>
+        </div>
+    </form>
+</div>
+
+<div class="col-md-6"></div>
+
+<div class="col-md-12">
+    <hr>
+</div>
